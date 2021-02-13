@@ -1,0 +1,18 @@
+<% if flash[:notice] %>
+  <p id="notice">
+    <%= flash[:notice] %>
+  </p>
+<% end %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @list.title %>
+</p>
+<p>
+  <strong>Body</strong>
+  <%= @list.body %>
+</p>
+<a><%= link_to "Edit", edit_book_path(@list.id) %></a>
+|
+<a><%= link_to "Back", index_book_path(@lists) %></a>
+
