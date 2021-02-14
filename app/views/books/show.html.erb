@@ -6,13 +6,13 @@
 
 <p>
   <strong>Title:</strong>
-  <%= @list.title %>
+  <%= @book.title %>
 </p>
 <p>
   <strong>Body</strong>
-  <%= @list.body %>
+  <%= @book.body %>
 </p>
-<a><%= link_to "Edit", edit_book_path(@list.id) %></a>
+<a><%= link_to "Edit", edit_book_path(@book.id) %></a>
 |
-<a><%= link_to "Back", index_book_path(@lists) %></a>
+<a><%= link_to "Back", index_book_path(@books) %></a>
 

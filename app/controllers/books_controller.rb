@@ -1,51 +1,51 @@
 class BooksController < ApplicationController
 
   def new
-   @list = List.new
+   @book = Book.new
   end
 
   def create
-    @list = List.new(list_params)
-    if @list.save
-      redirect_to show_book_path(@list.id)
+    @book = Book.new(book_params)
+    if @book.save
+      redirect_to show_book_path(@book.id)
       flash[:notice] = "Book was successfully created"
     else
-      @lists = List.all
+      @books = Book.all
       render "index"
     end
   end
 
   def index
-    @list = List.new
-    @lists = List.all
+    @book = Book.new
+    @books = Book.all
   end
 
   def show
-    @list = List.find(params[:id])
+    @book = Book.find(params[:id])
   end
 
   def edit
-    @list = List.find(params[:id])
+    @book = Book.find(params[:id])
   end
   def update
-    @list = List.find(params[:id])
-    if @list.update(list_params)
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
       flash[:notice] = "Book was successfully updated."
-      redirect_to show_book_path(@list.id)
+      redirect_to show_book_path(@book.id)
     else
       render "edit"
     end
   end
   def destroy
-    list = List.find(params[:id])  # データ（レコード）を1件取得
-    list.destroy  # データ（レコード）を削除
+    book = Book.find(params[:id])  # データ（レコード）を1件取得
+    book.destroy  # データ（レコード）を削除
     redirect_to books_path  # 投稿一覧画面へリダイレクト
     flash[:notice] = "Book was successfully deleted."
   end
 
   private
   # ストロングパラメータ
-  def list_params
-    params.require(:list).permit(:title, :body)
+  def book_params
+    params.require(:book).permit(:title, :body)
   end
 end
